@@ -1,6 +1,8 @@
 #include <string>
+#include <stdio.h>
+#include <iostream>
 #include <vector>
-#include "balde.h"
+#include "Balde.h"
 
 using namespace std;
 
@@ -16,5 +18,8 @@ class Diretorio {
 
     Diretorio(int profundidadeGlobal, int tamanhoBalde);
     ~Diretorio();
+
+    void Insere(string key);
+    Balde* Busca();
 
 };

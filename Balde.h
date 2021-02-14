@@ -7,14 +7,14 @@ class Balde {
 
     private: 
 
-    int profundidade_local;
+    int profundidadeLocal;
     int tamanho;
 
     vector<string> pseudoChaves;
 
     public:
 
-    Balde(int tamanho, int profundidade_local);
+    Balde(int tamanho, int profundidadeLocal);
     ~Balde();
 
     void setProfundidade (int profundidade);
