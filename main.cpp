@@ -8,6 +8,17 @@
 
 #define NUM 10
 
+string binMax(int numeroBits)
+{
+    string str;
+    for (int i = 0; i < numeroBits; i++)
+    {
+        str.push_back('1');
+    }
+
+    return str;
+}
+
 int binarioParaInt(string stringBin)
 {
     int result = 0;
@@ -18,9 +29,7 @@ int binarioParaInt(string stringBin)
     while (i < stringBin.length())
     {
         c = stringBin[i];
-        cout << c << endl;
         result = result + ((c - '0')*(pow(2,j)));
-        cout << result << endl;
         i++;
         j--;
     }
@@ -70,15 +79,17 @@ string intParaBinario(int n, int numeroBits)
 void chavesAleatorias(int numeroBits)
 {
     srand(time(NULL));
+
     string psdChave;
-    int num = 0;
+    int n = 0;
+    int numMax = binarioParaInt(binMax(numeroBits));
 
     for (int i = 0; i < NUM; i++)
     {
-        num = rand()% 17 + 1;
+        n = rand()%numMax  + 1;
         for (int j = 0; j < numeroBits; j++)
         {
-            psdChave = intParaBinario(num, numeroBits);
+            psdChave = intParaBinario(n, numeroBits);
             cout << psdChave << endl;
         }
     }
@@ -99,7 +110,7 @@ void menu(Diretorio *dir, int numeroBits)
 
     while (escolha != 0)
     {
-        cout << "Digite sua opção: ";
+        cout << "Digite sua opcao: ";
         cin >> escolha;
 
         if (escolha < 0 || escolha > 2)
@@ -132,7 +143,6 @@ int main()
     Diretorio *dir = new Diretorio(tamanhoBalde);
     cout << "Diretorio Criado!" << endl;
 
-    //menu(dir, numeroBits);
-    binarioParaInt("11111");
+    menu(dir, numeroBits);
     return 0;
 }
