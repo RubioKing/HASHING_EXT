@@ -16,7 +16,7 @@ class Diretorio {
 
     public:
 
-    Diretorio(int profundidadeGlobal, int tamanhoBalde);
+    Diretorio(int tamanhoBalde);
     ~Diretorio();
 
     void Insere(string key);
