@@ -1,4 +1,6 @@
 #include <string>
+#include <vector>
+#include "balde.h"
 
 using namespace std;
 
@@ -6,15 +8,13 @@ class Diretorio {
 
     private: 
 
-    string pseudo_chave;
+    int profundidadeGlobal;
+    int tamanhoBalde;
+    vector<Balde*> baldes;
 
     public:
 
-    Diretorio();
+    Diretorio(int profundidadeGlobal, int tamanhoBalde);
     ~Diretorio();
-
-    void setKey(string pseudo_chave);
-
-    string& getKey();
 
 };

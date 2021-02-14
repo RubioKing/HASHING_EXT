@@ -1,5 +1,12 @@
-int main(int argc, char const *argv[])
+#include <cstdlib>
+#include <iostream>
+#include <stdio.h>
+#include "Balde.h"
+
+int main()
 {
-    /* code */
+    Balde balde(2,2);
+
+    cout << balde.getKeys();
     return 0;
 }
