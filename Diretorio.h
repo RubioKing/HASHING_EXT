@@ -13,6 +13,7 @@ class Diretorio {
     int profundidadeGlobal;
     int tamanhoBalde;
     vector<Balde*> baldes;
+    int binarioParaInt(string stringBin);
 
     public:
 
@@ -20,6 +21,12 @@ class Diretorio {
     ~Diretorio();
 
     void Insere(string key);
+    bool busca(string str);
+    bool baldeCheio(Balde balde);
+    void duplicaBalde(int indiceBalde);
+    void duplicaDiretorio(int indiceBalde);
+    void limpaDiretorio();
+    void imprimeDiretorio();
     Balde* Busca();
 
 };

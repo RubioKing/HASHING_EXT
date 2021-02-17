@@ -9,12 +9,13 @@ class Balde {
 
     int profundidadeLocal;
     int tamanho;
+    int preenchido;
 
     vector<string> pseudoChaves;
 
     public:
 
-    Balde(int tamanho, int profundidadeLocal);
+    Balde(int tamanho);
     ~Balde();
 
     void setProfundidade (int profundidade);
@@ -22,7 +23,10 @@ class Balde {
 
     int getProfundidade();
     int getTamanho();
+    int getPreenchido();
     vector<string> getKeys();
+    bool baldeCheio();
+    void insereChave(string key);
 
 
 };

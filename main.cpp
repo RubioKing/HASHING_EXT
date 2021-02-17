@@ -6,7 +6,7 @@
 #include <math.h>
 #include "Diretorio.h"
 
-#define NUM 10
+#define NUM 20
 
 string binMax(int numeroBits)
 {
@@ -54,8 +54,6 @@ string intParaBinario(int n, int numeroBits)
         i++; 
     } 
 
-    cout << numeroBinario.size() << endl;
-
     if (numeroBinario.size() < numeroBits)
         {
             for ( int i = 0; i < (numeroBits - numeroBinario.size()); i++)
@@ -74,9 +72,9 @@ string intParaBinario(int n, int numeroBits)
 
     return stringBin;
         
-} 
+}
 
-void chavesAleatorias(int numeroBits)
+void chavesAleatorias(Diretorio *dir, int numeroBits)
 {
     srand(time(NULL));
 
@@ -84,19 +82,43 @@ void chavesAleatorias(int numeroBits)
     int n = 0;
     int numMax = binarioParaInt(binMax(numeroBits));
 
-    for (int i = 0; i < NUM; i++)
+    for (int i = 0; i < NUM;)
     {
         n = rand()%numMax  + 1;
-        for (int j = 0; j < numeroBits; j++)
+        
+        psdChave = intParaBinario(n, numeroBits);
+        
+        if (dir->busca(psdChave) == false)
         {
-            psdChave = intParaBinario(n, numeroBits);
-            cout << psdChave << endl;
+            dir->Insere(psdChave);
         }
+        else
+            i++;
     }
 }
 
-void bitsFixos()
+void bitFixo(Diretorio *dir, int numeroBits)
 {
+    srand(time(NULL));
+
+    string psdChave;
+    int n = 0;
+    int numMax = binarioParaInt(binMax(numeroBits-1));
+
+    for (int i = 0; i < NUM; i++)
+    {
+        psdChave = "0";
+
+        n = rand()%numMax  + 1;
+        
+        psdChave = psdChave + intParaBinario(n, numeroBits - 1);
+        
+        if(dir->busca(psdChave) == false)
+        {
+            dir->Insere(psdChave);
+        }
+        
+    }
 }
 
 void menu(Diretorio *dir, int numeroBits)
@@ -120,11 +142,15 @@ void menu(Diretorio *dir, int numeroBits)
 
         else if (escolha == 1)
         {
-            chavesAleatorias(numeroBits);
+            chavesAleatorias(dir , numeroBits);
+            dir->imprimeDiretorio();
+            dir->limpaDiretorio();
         }
 
         else if (escolha == 2)
         {
+            bitFixo(dir , numeroBits);
+            dir->imprimeDiretorio();
         }
     }
 }
